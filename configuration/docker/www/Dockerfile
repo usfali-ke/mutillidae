@@ -1,5 +1,5 @@
 # mutillidae/www:latest
-FROM php:8.0.6-apache
+FROM php:8.1.0alpha2-apache
 
 # Copy the TLS certificate files
 COPY ./mutillidae/configuration/https-certificate/mutillidae-selfsigned.crt /etc/ssl/certs/mutillidae-selfsigned.crt
