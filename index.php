@@ -126,10 +126,14 @@
 	   	    'httponly' => FALSE,         // true or false
 	   	    'samesite' => 'Lax'          // None || Lax  || Strict
 	   	);
+
 	   	if ($lProtectCookies){
-	   	    $l_cookie_options['httponly'] = TRUE;
+	   	    /* The showhints cookie is unprotected on purpose because
+	   	     * it is used in one of the lab assignments */
+	   	    //$l_cookie_options['httponly'] = TRUE;
 	   	    $l_cookie_options['samesite'] = 'Strict';
 	   	}// end if
+
 	   	setcookie('showhints', $l_showhints, $l_cookie_options);
 	}// end if (isset($_COOKIE["showhints"])){
 
@@ -137,8 +141,8 @@
 		// make session = cookie
 		$_SESSION["showhints"] = $l_showhints;
 		switch ($l_showhints){
-			case 0: $_SESSION["hints-enabled"] = "Disabled (".$l_showhints." - I try harder)"; break;
-			case 1: $_SESSION["hints-enabled"] = "Enabled (".$l_showhints." - Try easier)"; break;
+			case 0: $_SESSION["hints-enabled"] = "Disabled"; break;
+			case 1: $_SESSION["hints-enabled"] = "Enabled"; break;
 		}// end switch
 	}//end if
 
@@ -411,8 +415,23 @@
 		case ".htaccess":
 		case ".htaccess.php":
 		case "secret.php":
-   		case "admin.php":		case "_adm.php":		case "_admin.php":		case "root.php":		case "administrator.php":
-		case "auth.php":		case "hidden.php":		case "console.php":		case "conf.php":		case "_private.php":		case "private.php":		case "access.php":		case "control.php":		case "control-panel.php":		case "bash_history":		case ".history":		case ".htpasswd":
+   		case "admin.php":
+		case "_adm.php":
+		case "_admin.php":
+		case "root.php":
+		case "administrator.php":
+		case "auth.php":
+		case "hidden.php":
+		case "console.php":
+		case "conf.php":
+		case "_private.php":
+		case "private.php":
+		case "access.php":
+		case "control.php":
+		case "control-panel.php":
+		case "bash_history":
+		case ".history":
+		case ".htpasswd":
 		case ".htpasswd.php":
 
    			switch ($_SESSION["security-level"]){
@@ -475,7 +494,10 @@
 
         header($lReportToHeader, TRUE);
         header($lCSP, TRUE);
+    }else{
+        $CSPNonce = "";
     }// end if
+
     /* ------------------------------------------
      * END Content Security Policy (CSP)
      * ------------------------------------------ */

@@ -1,26 +1,4 @@
-    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
-    <html>
-    	<head>
-    		<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
-    		<link rel="stylesheet" type="text/css" href="./styles/global-styles.css" />
-    	</head>
-    	<body>
-    		<div>&nbsp;</div>
-    		<div class="page-title">Setting up the database...</div><br /><br />
-    		<div class="label" style="text-align: center;">If you see no error messages, it should be done.</div>
-    		<div>&nbsp;</div>
-    		<div class="label" style="text-align: center;"><a href="index.php">Continue back to the frontpage.</a></div>
-    		<br />
-    		<script>
-    			try{
-    				window.sessionStorage.clear();
-    				window.localStorage.clear();
-    			}catch(e){
-    				alert("Error clearing HTML 5 Local and Session Storage" + e.toString());
-    			};
-    		</script>
-    		<div class="database-success-message">HTML 5 Local and Session Storage cleared unless error popped-up already.</div>
-    <?php
+<?php
 
     if (session_status() == PHP_SESSION_NONE){
         session_start();
@@ -52,6 +30,31 @@
 
     	return "<div class=\"".$lStyle."\">" . $pMessage . "</div>";
     }// end function
+?>
+
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+    <html>
+    	<head>
+    		<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+    		<link rel="stylesheet" type="text/css" href="./styles/global-styles.css" />
+    	</head>
+    	<body>
+    		<div>&nbsp;</div>
+    		<div class="page-title">Setting up the database...</div><br /><br />
+    		<div class="label" style="text-align: center;">If you see no error messages, it should be done.</div>
+    		<div>&nbsp;</div>
+    		<div class="label" style="text-align: center;"><a href="index.php">Continue back to the frontpage.</a></div>
+    		<br />
+    		<script>
+    			try{
+    				window.sessionStorage.clear();
+    				window.localStorage.clear();
+    			}catch(e){
+    				alert("Error clearing HTML 5 Local and Session Storage" + e.toString());
+    			};
+    		</script>
+    		<div class="database-success-message">HTML 5 Local and Session Storage cleared unless error popped-up already.</div>
+<?php
 
     try{
     	echo format("Attempting to connect to MySQL server on host " . MySQLHandler::$mMySQLDatabaseHost . " with user name " . MySQLHandler::$mMySQLDatabaseUsername,"I");
@@ -550,6 +553,9 @@
     			('labs/lab-58.php', 125, 1),
     			('labs/lab-59.php', 126, 1),
     			('labs/lab-60.php', 127, 1),
+    			('labs/lab-61.php', 128, 1),
+    			('labs/lab-62.php', 129, 1),
+    			('labs/lab-63.php', 130, 1),
     			('login.php', 1, 1),
     			('login.php', 10, 2),
     			('login.php', 53, 2),
@@ -887,6 +893,9 @@
     		(125, 'Lab 58', 'lab-58-hint.inc'),
     		(126, 'Lab 59', 'lab-59-hint.inc'),
     		(127, 'Lab 60', 'lab-60-hint.inc'),
+    		(128, 'Lab 61', 'lab-61-hint.inc'),
+    		(129, 'Lab 62', 'lab-62-hint.inc'),
+    		(130, 'Lab 63', 'lab-63-hint.inc'),
     		(999, 'Hints Not Found', 'hints-not-found.inc')";
 
     	$lQueryResult = $MySQLHandler->executeQuery($lQueryString);
@@ -998,7 +1007,17 @@
     			(5, 'plv4ilIJbYo', 'JWT Security: Part 5 - Why use Certificate-based Signatures?'),
     			(6, 'JST-9GmWA2s', 'JWT Security: Part 6 - Importance of Input Validation'),
     			(7, 'eGXCK3YieaI', 'How to Scan for Web Vulnerabilities with Nikto'),
+    			(8, 'Mv7wpCIAdp4', 'What is SQL Injection?'),
+                (9, 'DF22sTpcE6w', 'OWASP Dependency Check: Part 1 - How to Install'),
+                (10, 'X47ZkdYnGZI', 'OWASP Dependency Check: Part 2 - How to Scan Your Project'),
+                (11, '1a652-fvQLA', 'Linux Basics: How to Identify File Type'),
     			(13, 'la5hTlSDKWg', 'Using Burp Intruder Sniper to Fuzz Parameters'),
+    			(14, 'YoNlia7B5F0', 'Cross-Site Scripting: Part 1- What is Reflected XSS?'),
+    			(15, 'yN6hjtNvhMo', 'Cross-Site Scripting: Part 2 - What is DOM-based XSS?'),
+    			(16, 'i0nOTA2NNDY', 'Cross-Site Scripting: Part 3 - What is Persistent XSS?'),
+    			(17, 'V3xCPCaaH4s', 'What is Insecure Direct Object Reference (IDOR)?'),
+    			(18, 'eQxIPjasZqA', 'What is an Open Redirect?'),
+    			(19, 'UUbeaJiVBAw', 'What is Cross-Site Request Forgery (CSRF)?'),
     			(99, '7vWTEbOfa-8', 'Introduction to Burp-Suite Intruders Character Frobber Payload'),
     	        (100, 't0uMReqs8Ng', 'Introduction to Burp-Suite Intruders Grep-Extract Feature'),
                 (137, 'Cazzls2sZVk', 'How to Create Ubuntu Virtual Machine (VirtualBox)'),
@@ -1054,7 +1073,6 @@
                 (199, 'ySzxNgQ6Qpk', 'How to Start OWASP ZAP from Command Line'),
                 (200, 'dId4FS_Gyn4', 'Extending OWASP ZAP with Add-Ons'),
                 (201, '1CJB8BtW0pQ', 'Using OWASP ZAP with Burp-Suite: Best of Both Worlds'),
-
     	        (202, 'ZSGE8EAHOdA', 'HTML Controls are not Security Controls'),
     	        (203, 'qkkFc_6Gr1k', 'Burp-Suite 2: Inspecting Web Sockets'),
     	        (204, 'Eqfe_HYX7MU', 'How to check HTTPS certificate from command line'),
@@ -1083,8 +1101,8 @@
                 (227, 'lKX1MIIxFCg', 'SSLScan: Part 1 - How to test HTTPS, TLS, & SSL ciphers'),
                 (228, 'DDbwrMrwOFc', 'SSLScan: Part 2 - How to Interpret the Results'),
                 (229, 'zUwPhHigi_M', 'How to Install SSLScan on Windows'),
-                (234, '2-U2s0akMqE', 'Output Encoding: Part 1 - How It Stops Cross-site Scripting (XSS)'),
-                (235, 'JlLVhdlqe1Q', 'Output Encoding: Part 2 - How to Test if it Works'),
+                (234, '2-U2s0akMqE', 'Cross-Site Scripting: Part 4 - How Output Encoding Stops XSS'),
+                (235, 'JlLVhdlqe1Q', 'Cross-Site Scripting: Part 5 - How to Test Output Encoding'),
                 (236, '2uWAZsCm-W8', 'How Cross-site Request Forgery (CSRF) Tokens Work'),
             	(237, 'QDIppL_j6Vo', 'What is CORS? - Part 1 - Explanation'),
             	(238, 'CxFuAcThKPA', 'What is CORS? - Part 2 - Demonstration'),
@@ -1106,9 +1124,9 @@
     	        (254, '3yCX0MWV820', 'Mutillidae: Lab 4 Walkthrough'),
     	        (255, 'lU_fu-B5QtI', 'Mutillidae: Lab 5 Walkthrough'),
     	        (256, '6FXeO3Wx5wc', 'Mutillidae: Lab 6 Walkthrough'),
-    	        (257, '5', 'Mutillidae: Lab 7 Walkthrough'),
-    	        (258, '6', 'Mutillidae: Lab 8 Walkthrough'),
-    	        (259, '7', 'Mutillidae: Lab 9 Walkthrough'),
+    	        (257, 'V_CsaO6RkvM', 'Mutillidae: Lab 7 Walkthrough'),
+    	        (258, 'fVv39I0oXHE', 'Mutillidae: Lab 8 Walkthrough'),
+    	        (259, 'KqoL60jtBWU', 'Mutillidae: Lab 9 Walkthrough'),
     	        (260, '8', 'Mutillidae: Lab 10 Walkthrough'),
     	        (261, '9', 'Mutillidae: Lab 11 Walkthrough'),
     	        (262, '10', 'Mutillidae: Lab 12 Walkthrough'),
@@ -1116,50 +1134,54 @@
     	        (264, '12', 'Mutillidae: Lab 14 Walkthrough'),
     	        (265, '13', 'Mutillidae: Lab 15 Walkthrough'),
     	        (266, '14', 'Mutillidae: Lab 16 Walkthrough'),
-    	        (267, '15', 'Mutillidae: Lab 17 Walkthrough'),
-    	        (268, '16', 'Mutillidae: Lab 18 Walkthrough'),
-    	        (269, '17', 'Mutillidae: Lab 19 Walkthrough'),
-    	        (270, '18', 'Mutillidae: Lab 20 Walkthrough'),
-    	        (271, '19', 'Mutillidae: Lab 21 Walkthrough'),
-    	        (272, '20', 'Mutillidae: Lab 22 Walkthrough'),
-    	        (273, '21', 'Mutillidae: Lab 23 Walkthrough'),
-    	        (274, '22', 'Mutillidae: Lab 24 Walkthrough'),
-    	        (275, '23', 'Mutillidae: Lab 25 Walkthrough'),
-    	        (276, '24', 'Mutillidae: Lab 26 Walkthrough'),
-    	        (277, '25', 'Mutillidae: Lab 27 Walkthrough'),
-    	        (278, '26', 'Mutillidae: Lab 28 Walkthrough'),
-    	        (279, '27', 'Mutillidae: Lab 29 Walkthrough'),
-    	        (280, '28', 'Mutillidae: Lab 30 Walkthrough'),
-    	        (281, '29', 'Mutillidae: Lab 31 Walkthrough'),
-                (282, '30', 'Mutillidae: Lab 32 Walkthrough'),
-                (283, '31', 'Mutillidae: Lab 33 Walkthrough'),
-                (284, '32', 'Mutillidae: Lab 34 Walkthrough'),
-                (285, '33', 'Mutillidae: Lab 35 Walkthrough'),
-                (286, '34', 'Mutillidae: Lab 36 Walkthrough'),
-                (287, '35', 'Mutillidae: Lab 37 Walkthrough'),
-                (288, '36', 'Mutillidae: Lab 38 Walkthrough'),
+    	        (267, 'UjEblUrWvb4', 'Mutillidae: Lab 17 Walkthrough'),
+    	        (268, 'J2kq8EzhnCE', 'Mutillidae: Lab 18 Walkthrough'),
+    	        (269, 'QSsLONLS5bk', 'Mutillidae: Lab 19 Walkthrough'),
+    	        (270, 'PyHiBzfl0hI', 'Mutillidae: Lab 20 Walkthrough'),
+    	        (271, 'NDITrGT9IqM', 'Mutillidae: Lab 21 Walkthrough'),
+    	        (272, 'u8z7S1HlCHM', 'Mutillidae: Lab 22 Walkthrough'),
+    	        (273, 'MfSKEtbMAjw', 'Mutillidae: Lab 23 Walkthrough'),
+    	        (274, 'ydRZoXfZL9k', 'Mutillidae: Lab 24 Walkthrough'),
+    	        (275, 'L0FvIGx0Co0', 'Mutillidae: Lab 25 Walkthrough'),
+    	        (276, 'TzhKue6jmN0', 'Mutillidae: Lab 26 Walkthrough'),
+    	        (277, 'lvVMnPQX8tE', 'Mutillidae: Lab 27 Walkthrough'),
+    	        (278, 'UJunZ3Vadsc', 'Mutillidae: Lab 28 Walkthrough'),
+    	        (279, 'BT6LrYLKE4A', 'Mutillidae: Lab 29 Walkthrough'),
+    	        (280, 'rt-GoLEs6L4', 'Mutillidae: Lab 30 Walkthrough'),
+    	        (281, 'OvDnbPbborM', 'Mutillidae: Lab 31 Walkthrough'),
+                (282, 'y9vhp0llgNc', 'Mutillidae: Lab 32 Walkthrough'),
+                (283, 'BlwFGkj79vk', 'Mutillidae: Lab 33 Walkthrough'),
+                (284, 'ERhowYml8Ms', 'Mutillidae: Lab 34 Walkthrough'),
+                (285, '6y5jl0y8Ukc', 'Mutillidae: Lab 35 Walkthrough'),
+                (286, 'y1EDT6UTvqA', 'Mutillidae: Lab 36 Walkthrough'),
+                (287, 'qIT-Hc_RJZI', 'Mutillidae: Lab 37 Walkthrough'),
+                (288, 'NtkXw02MsQ4', 'Mutillidae: Lab 38 Walkthrough'),
                 (289, '37', 'Mutillidae: Lab 39 Walkthrough'),
                 (290, '38', 'Mutillidae: Lab 40 Walkthrough'),
                 (291, '39', 'Mutillidae: Lab 41 Walkthrough'),
-                (292, '40', 'Mutillidae: Lab 42 Walkthrough'),
-                (293, '41', 'Mutillidae: Lab 43 Walkthrough'),
-                (294, '42', 'Mutillidae: Lab 44 Walkthrough'),
-                (295, '43', 'Mutillidae: Lab 45 Walkthrough'),
-                (296, '44', 'Mutillidae: Lab 46 Walkthrough'),
-                (297, '45', 'Mutillidae: Lab 47 Walkthrough'),
+                (292, 'fyVmA7nlSVo', 'Mutillidae: Lab 42 Walkthrough'),
+                (293, 'kr4KD9RJ-hA', 'Mutillidae: Lab 43 Walkthrough'),
+                (294, 'ETK7l27eZTs', 'Mutillidae: Lab 44 Walkthrough'),
+                (295, 'THnZOa93SOs', 'Mutillidae: Lab 45 Walkthrough'),
+                (296, 'LkH_qRqcJzo', 'Mutillidae: Lab 46 Walkthrough'),
+                (297, 'ICXErYUJ3sU', 'Mutillidae: Lab 47 Walkthrough'),
                 (298, '46', 'Mutillidae: Lab 48 Walkthrough'),
-                (299, '47', 'Mutillidae: Lab 49 Walkthrough'),
-                (300, '48', 'Mutillidae: Lab 50 Walkthrough'),
-                (301, '49', 'Mutillidae: Lab 51 Walkthrough'),
-                (302, '50', 'Mutillidae: Lab 52 Walkthrough'),
-                (303, '51', 'Mutillidae: Lab 53 Walkthrough'),
-                (304, '52', 'Mutillidae: Lab 54 Walkthrough'),
-                (305, '53', 'Mutillidae: Lab 55 Walkthrough'),
+                (299, 'Ddnid67vqq4', 'Mutillidae: Lab 49 Walkthrough'),
+                (300, 'px40hbprIOM', 'Mutillidae: Lab 50 Walkthrough'),
+                (301, 'DGYVXsrZrug', 'Mutillidae: Lab 51 Walkthrough'),
+                (302, 'JJOqPu_oyi8', 'Mutillidae: Lab 52 Walkthrough'),
+                (303, 'Gxm1_bkYcZ4', 'Mutillidae: Lab 53 Walkthrough'),
+                (304, 'NF8dxs_CQA0', 'Mutillidae: Lab 54 Walkthrough'),
+                (305, 'x7ibzMx4c3c', 'Mutillidae: Lab 55 Walkthrough'),
                 (306, '54', 'Mutillidae: Lab 56 Walkthrough'),
                 (307, '55', 'Mutillidae: Lab 57 Walkthrough'),
                 (308, '56', 'Mutillidae: Lab 58 Walkthrough'),
                 (309, '57', 'Mutillidae: Lab 59 Walkthrough'),
-    	        (310, '58', 'Mutillidae: Lab 60 Walkthrough')";
+    	        (310, 'sVgXHH9GSyk', 'Mutillidae: Lab 60 Walkthrough'),
+    	        (311, '6BIdjAYCyKc', 'Mutillidae: Lab 61 Walkthrough'),
+    	        (312, 'z0USLZLCPPE', 'Mutillidae: Lab 62 Walkthrough'),
+    	    	(313, '2fQfma45UMc', 'Mutillidae: Lab 63 Walkthrough'),
+                (314, 'Y4TWdPZp2eA', 'Mutillidae: Lab 51 Walkthrough - Alternate Method')";
 
     $lQueryResult = $MySQLHandler->executeQuery($lQueryString);
 	if (!$lQueryResult) {

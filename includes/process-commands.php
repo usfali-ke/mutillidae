@@ -81,7 +81,9 @@
 			    'samesite' => 'Lax'          // None || Lax  || Strict
 			);
 			if ($lProtectCookies){
-			    $l_cookie_options['httponly'] = TRUE;
+			    /* The showhints cookie is unprotected on purpose because
+			     * it is used in one of the lab assignments */
+			    //$l_cookie_options['httponly'] = TRUE;
 			    $l_cookie_options['samesite'] = 'Strict';
 			}// end if
 			setcookie('showhints', $l_showhints, $l_cookie_options);
@@ -119,7 +121,7 @@
 		     * show the hints again */
 		    if ($lSecurityLevel == 0){
 		    	$_SESSION["showhints"] = 1;
-		    	$_SESSION["hints-enabled"] = "Enabled (1 - 5cr1pt K1dd1e))";
+		    	$_SESSION["hints-enabled"] = "Enabled";
 
 		    	$l_cookie_options = array (
 		    	    'expires' => 0,              // 0 means session cookie
@@ -137,14 +139,15 @@
 		     * There is a way to defeat this */
 			if ($lSecurityLevel > 1){
 		    	$_SESSION["showhints"] = 0;
-				$_SESSION["hints-enabled"] = "Disabled (0 - I try harder)";
+				$_SESSION["hints-enabled"] = "Disabled";
 
 				$l_cookie_options = array (
 				    'expires' => 0,              // 0 means session cookie
 				    'path' => '/',               // '/' means entire domain
 				    //'domain' => '.example.com', // default is current domain
 				    'secure' => FALSE,           // true or false
-				    'httponly' => TRUE,         // true or false
+				    'httponly' => FALSE,         /* The showhints cookie is unprotected on purpose because
+				                                  * it is used in one of the lab assignments */
 				    'samesite' => 'Strict'          // None || Lax  || Strict
 				);
 				setcookie('showhints', "0", $l_cookie_options);
